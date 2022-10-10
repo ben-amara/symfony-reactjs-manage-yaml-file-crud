@@ -48,10 +48,10 @@ organizations:
         role: [SALES]
         password: demo3
   -
-    name: malt
-    description: 'malt freelance'
+    name: Malt
+    description: 'Malt allows you to work safely, securely, and effectively with the best freelancers: developers, graphic designers, project managers, and more.'
     users:
       -
-        name: maltuser
-        password: maltPW
+        name: Alban
+        password: Alban
         role: '["ADMIN", "CEO"]'

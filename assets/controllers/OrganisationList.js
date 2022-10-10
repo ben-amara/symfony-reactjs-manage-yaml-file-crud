@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import OrganizationForm from './organization-form';
 import config from '../config/config'
+import { Container } from 'react-bootstrap';
 
 const initialFormDt = {
     name: '',
@@ -145,41 +146,49 @@ export const OrganisationList = () => {
                             <span className="fa fa-spin fa-spinner fa-4x"></span>
                         </div>
                     ) : (
-                        <div className='row'>
+                        <Container>
+                            <div className='row'>
 
-                            <div className="">
-                                <div className="container">
-                                    <div className="row">
-                                        <div className="">
-                                            <table className="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col">Name</th>
-                                                        <th scope="col">description</th>
-                                                        <th scope="col">Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {state.organisations.map((row, index) =>
-                                                        <tr key={index}>
-                                                            <th scope="row">{index}</th>
-                                                            <td>{row.name}</td>
-                                                            <td>{row.description}</td>
-                                                            <td className='col-2'>
-                                                                <button type="button" onClick={() => hadnlerSwitchForm('UPDATE', row, index)} className="mr-2 btn btn-success"><i className="fas fa-edit"></i></button>
-                                                                <button type="button" onClick={() => handlerDelete(row.name, index)} className="btn btn-danger"><i className="far fa-trash-alt"></i></button>
-                                                            </td>
+                                <div className="">
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="">
+                                                <table className="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">description</th>
+                                                            <th scope="col">Actions</th>
                                                         </tr>
-                                                    )}
-                                                </tbody>
-                                            </table>
+                                                    </thead>
+                                                    <tbody>
+                                                        {state.organisations.map((row, index) =>
+                                                            <tr key={index}>
+                                                                <th scope="row">{index}</th>
+                                                                <td>{row.name}</td>
+                                                                <td>{row.description}</td>
+                                                                <td className='col-2'>
+                                                                    <button type="button" onClick={() => hadnlerSwitchForm('UPDATE', row, index)} className="mr-2 btn btn-success"><i className="fas fa-edit"></i></button>
+                                                                    <button type="button" onClick={() => handlerDelete(row.name, index)} className="btn btn-danger"><i className="far fa-trash-alt"></i></button>
+                                                                </td>
+                                                            </tr>
+                                                        )}
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                        </div>
+                            </div>
+                            <Row>
+                                <Col>
+                                    <a href='/api/download'>Download YAML file</a>
+                                </Col>
+                            </Row>
+                        </Container>
+
                     )}
                 </div> : (
                     <div className="container">

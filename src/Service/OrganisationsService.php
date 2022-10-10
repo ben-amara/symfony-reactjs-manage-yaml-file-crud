@@ -18,8 +18,9 @@ class OrganisationsService
 
 
 
-    public function getOrganisation($organisation_name)
+    public function getPathStorageFile()
     {
+        return $this->path_yaml_file;
     }
 
     public function getAllOrganisations()

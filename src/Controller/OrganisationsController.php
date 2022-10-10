@@ -7,7 +7,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Service\OrganisationsService;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 /**
  * @Route("/api", name="organisation_")
@@ -50,9 +52,22 @@ class OrganisationsController extends AbstractController
      * @Route ("/organisation/{name}/delete", name="organisation_delete")
      * Method ({"DELETE"})
      */
-    public function delete(Request $request, $name, OrganisationsService $organisationsService)
+    public function delete($name, OrganisationsService $organisationsService)
     {
         [$message, $status] = $organisationsService->deleteOrganisation($name);
         return new JsonResponse($message, $status);
+    }
+
+    /**
+     * @Route("/download")
+     */
+    public function downloadAction(OrganisationsService $organisationsService)
+    {
+
+        $file_with_path = $organisationsService . "/organizations.yaml";
+        $response = new BinaryFileResponse($file_with_path);
+        $response->headers->set('Content-Type', 'text/yaml');
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, "organizations.yaml");
+        return $response;
     }
 }
