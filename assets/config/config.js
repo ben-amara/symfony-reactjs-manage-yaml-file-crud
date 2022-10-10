@@ -1,4 +1,4 @@
-const API_BACKEND = 'http://localhost:8001/api/organisation';
+const API_BACKEND = 'https://enigmatic-refuge-50852.herokuapp.com/api/organisation';
 
 module.exports = {
     API_BACKEND
