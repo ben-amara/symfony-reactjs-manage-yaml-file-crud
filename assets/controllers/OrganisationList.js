@@ -11,11 +11,7 @@ const initialFormDt = {
     description: '',
     users: []
 }
-const initialFormError = {
-    name: '',
-    description: '',
-    users: []
-}
+
 export const OrganisationList = () => {
 
     const [state, setState] = useState({ organisations: [], loading: true });
@@ -183,7 +179,7 @@ export const OrganisationList = () => {
 
                             </div>
                             <Row>
-                                <Col>
+                                <Col className='text-right'>
                                     <a href='/api/download'>Download YAML file</a>
                                 </Col>
                             </Row>
