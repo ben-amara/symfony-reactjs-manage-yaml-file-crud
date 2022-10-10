@@ -64,7 +64,7 @@ class OrganisationsController extends AbstractController
     public function downloadAction(OrganisationsService $organisationsService)
     {
 
-        $file_with_path = $organisationsService . "/organizations.yaml";
+        $file_with_path = $organisationsService->getPathStorageFile() . "/organizations.yaml";
         $response = new BinaryFileResponse($file_with_path);
         $response->headers->set('Content-Type', 'text/yaml');
         $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, "organizations.yaml");
